@@ -1,0 +1,27 @@
+# API keys - never commit this
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+
+# ChromaDB storage (large, rebuilds from PDFs)
+storage/chroma/
+
+# Uploaded PDFs (user data)
+storage/uploads/
+
+# Extracted images (rebuilds on upload)
+storage/images/
+
+# Node modules (too large)
+frontend/node_modules/
+
+# React build output
+frontend/build/
+
+# VS Code
+.vscode/
+
+# Virtual environment
+.venv/

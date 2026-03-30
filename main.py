@@ -4,6 +4,8 @@ import asyncio
 import logging
 from pathlib import Path
 from typing import List, Optional
+from dotenv import load_dotenv
+load_dotenv()
 
 from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.responses import StreamingResponse
@@ -109,3 +111,35 @@ def get_context(topic: str, text_n: int = 8, image_n: int = 4):
         ],
         "images": retrieved["images"]
     }
+
+@app.post("/generate")
+async def generate_paper(req: GenerateRequest):
+    if not req.topic.strip():
+        raise HTTPException(status_code=400, detail="Topic cannot be empty")
+    if rag.stats()["text_chunks"] == 0:
+        raise HTTPException(status_code=400, detail="No papers indexed yet.")
+
+    retrieved = rag.retrieve_for_generation(
+        topic=req.topic,
+        paper_ids=req.paper_ids,
+    )
+
+    async def event_stream():
+        try:
+            from paper_generator import generate_paper_sync
+            paper = await asyncio.get_event_loop().run_in_executor(
+                None,
+                lambda: generate_paper_sync(retrieved, api_key=req.api_key)
+            )
+            escaped = paper.replace("\n", "\\n")
+            yield f"data: {escaped}\n\n"
+        except Exception as e:
+            yield f"data: [ERROR] {str(e)}\n\n"
+        finally:
+            yield "data: [DONE]\n\n"
+
+    return StreamingResponse(
+        event_stream(),
+        media_type="text/event-stream",
+        headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
+    )

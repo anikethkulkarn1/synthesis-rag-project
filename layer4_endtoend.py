@@ -2,6 +2,8 @@ from pdf_ingestion import ingest_pdf
 from rag_pipeline import RAGPipeline
 from paper_generator import generate_paper_sync
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 # Step 1: Ingest
 result = ingest_pdf("C:\\Users\\anike\\OneDrive\\Desktop\\rag-sandbox\\test_paper.pdf")
@@ -29,7 +31,7 @@ for i, chunk in enumerate(context['text_chunks']):
     print(chunk['content'])
 
 # Step 5: Generate
-os.environ["GEMINI_API_KEY"] = "AIzaSyD6QRKlmdosazSSqatvCQSyFz3Voe3KdGI"
+
 print("\n--- GENERATING PAPER ---")
 print("This will take 30-60 seconds...\n")
 

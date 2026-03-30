@@ -778,7 +778,7 @@ export default function App() {
               <input
                 className="api-input"
                 type="password"
-                placeholder="sk-ant-... (or set env var)"
+                placeholder="Enter you API"
                 value={apiKey}
                 onChange={(e) => setApiKey(e.target.value)}
               />
