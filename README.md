@@ -92,9 +92,6 @@ cd synthesis-rag-project
 
 ### 2. Set up environment variables
 ```bash
-cp .env.example .env
-```
-
 Open `.env` and add your API key:
 ```
 GROQ_API_KEY=your-groq-key-here
@@ -113,7 +110,7 @@ uvicorn main:app --host 0.0.0.0 --port 8000 --reload
 Backend runs at `http://localhost:8000`
 API docs at `http://localhost:8000/docs`
 
-### 5. Install and start the frontend
+### 5. Install and start the frontend in a new terminal
 ```bash
 cd frontend
 npm install
@@ -195,3 +192,9 @@ Make sure your Groq API key is entered in the API key field or set in `.env`. Ch
 
 **Images not showing in the figures panel**
 The figures panel populates after clicking Generate. Images below 100x100px are filtered out during ingestion.
+
+## Questions to try out
+1. machine learning and deep learning approaches for network intrusion detection systems
+2. feature selection algorithms for anomaly based intrusion detection
+3. machine learning techniques for network intrusion detection
+4. swarm intelligence and bio-inspired approaches for intrusion detection systems
