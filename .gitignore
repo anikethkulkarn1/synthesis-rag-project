@@ -1,23 +1,23 @@
-# API keys - never commit this
+# API keys
 .env
 
 # Python cache
 __pycache__/
 *.pyc
 
-# ChromaDB storage (large, rebuilds from PDFs)
+# ChromaDB storage
 storage/chroma/
 
-# Uploaded PDFs (user data)
+# Uploaded PDFs
 storage/uploads/
 
-# Extracted images (rebuilds on upload)
+# Extracted images
 storage/images/
 
-# Node modules (too large)
+# Node modules
 frontend/node_modules/
 
-# React build output
+# React build
 frontend/build/
 
 # VS Code

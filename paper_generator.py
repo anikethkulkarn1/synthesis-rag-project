@@ -39,7 +39,7 @@ Guidelines:
         if pt not in papers_seen:
             papers_seen[pt] = chunk["paper_id"]
             user_content += f"\n### From: {pt}\n"
-        user_content += f"[Section: {chunk.get('section', 'N/A')}, Page {chunk['page']}]\n{chunk['content']}\n"
+        user_content += f"[Section: {chunk.get('section', 'N/A')}, Page {chunk['page']}]\n{chunk['content'][:300]}\n"
 
     user_content += "\n---\n\nNow write the full academic research paper. Begin with the title and abstract."
 

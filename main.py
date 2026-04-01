@@ -120,9 +120,11 @@ async def generate_paper(req: GenerateRequest):
         raise HTTPException(status_code=400, detail="No papers indexed yet.")
 
     retrieved = rag.retrieve_for_generation(
-        topic=req.topic,
-        paper_ids=req.paper_ids,
-    )
+    topic=req.topic,
+    paper_ids=req.paper_ids,
+    text_n=6,
+    image_n=2,
+)
 
     async def event_stream():
         try:
