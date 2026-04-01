@@ -86,8 +86,8 @@ rag-sandbox/
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/anikethkulkarn1/rag-research-paper-generator.git
-cd rag-research-paper-generator
+git clone https://github.com/anikethkulkarn1/synthesis-rag-project.git
+cd synthesis-rag-project
 ```
 
 ### 2. Set up environment variables
